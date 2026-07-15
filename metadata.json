@@ -1,0 +1,6 @@
+{
+  "name": "GPTIS Guide Hub",
+  "description": "현장 사용자를 위한 GPTIS 셀프서비스 가이드 및 문제 해결 포털",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

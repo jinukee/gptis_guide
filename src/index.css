@@ -1,0 +1,267 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Overriding Tailwind's default gray palette with Claude's warm values */
+  --color-gray-50: #faf9f5;      /* Canvas */
+  --color-gray-100: #efe9de;     /* Light cream card background */
+  --color-gray-200: #e6dfd8;     /* Hairline border */
+  --color-gray-300: #ebe6df;     /* Hairline soft border */
+  --color-gray-400: #8e8b82;     /* Muted soft */
+  --color-gray-500: #6c6a64;     /* Muted */
+  --color-gray-600: #3d3d3a;     /* Body text */
+  --color-gray-700: #252523;     /* Body strong */
+  --color-gray-850: #1c1b19;
+  --color-gray-900: #141413;     /* Warm ink text */
+  --color-gray-950: #141413;
+
+  /* Overriding Tailwind's blue (primary color in this app) with Coral brand accent */
+  --color-blue-50: #efe9de;      /* Warm surface card */
+  --color-blue-100: #e6dfd8;     /* Hairline border */
+  --color-blue-200: #dcd6ce;     /* Border active */
+  --color-blue-300: #e8a55a;     /* Accent amber */
+  --color-blue-400: #cc785c;     /* Brand coral */
+  --color-blue-500: #cc785c;     /* Brand coral primary */
+  --color-blue-600: #cc785c;     /* Brand coral primary */
+  --color-blue-700: #a9583e;     /* Coral active hover state */
+  --color-blue-800: #934c35;
+  --color-blue-900: #181715;     /* Dark navy product surface */
+
+  /* Overriding teal with Claude's soft accent teal */
+  --color-teal-50: #f5f0e8;
+  --color-teal-100: #ebe6df;
+  --color-teal-700: #5db8a6;
+
+  /* Overriding amber with Claude's warm amber */
+  --color-amber-50: #f5f0e8;
+  --color-amber-100: #ebe6df;
+  --color-amber-700: #e8a55a;
+
+  /* Overriding red (used for errors/critical warnings) with brand red */
+  --color-red-50: #faf9f5;
+  --color-red-100: #e6dfd8;
+  --color-red-500: #cc785c;
+  --color-red-700: #c64545;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+/* Custom fade-in and micro-interactions animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   Claude Editorial Stylesheet Overrides
+   ========================================================================== */
+
+body {
+  background-color: #faf9f5 !important; /* Base warm canvas */
+  color: #141413 !important;           /* Dark warm ink text */
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Base layouts: Ensure the background is always the warm cream canvas */
+.min-h-screen, .bg-gray-50, .bg-slate-50, .bg-zinc-50 {
+  background-color: #faf9f5 !important;
+}
+
+/* Serif display headings for an intellectual, literary tone */
+h1, h2, h3, h4, h5, h6, .font-serif, [class*="font-serif"] {
+  font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  color: #141413 !important;
+}
+
+h1 {
+  font-size: 2.25rem !important; /* Fluid, beautiful sizing */
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em !important;
+}
+
+h2 {
+  font-size: 1.75rem !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+}
+
+h3 {
+  font-size: 1.35rem !important;
+  line-height: 1.25 !important;
+}
+
+/* Normal text formatting */
+p, span, li, td, th, label {
+  color: #3d3d3a; /* Default body color */
+}
+
+strong, b {
+  color: #141413; /* Bold text in deep warm ink */
+  font-weight: 600;
+}
+
+/* Standard bg-white elements become light warm cream cards */
+.bg-white {
+  background-color: #efe9de !important; /* Light cream card surface */
+  border-color: #e6dfd8 !important;     /* Hairline border */
+}
+
+/* Sub-panels, sidebar items, and input focus background */
+input, select, textarea {
+  background-color: #faf9f5 !important; /* Tinted input fields */
+  color: #141413 !important;
+  border-color: #e6dfd8 !important;
+  border-radius: 8px !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #cc785c !important; /* Focus ring is warm coral */
+  box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.15) !important;
+}
+
+/* Header customization - Clean minimal warm cream canvas background */
+header, header.bg-white {
+  background-color: #faf9f5 !important;
+  border-bottom: 1px solid #e6dfd8 !important;
+}
+
+header span, header p, header div {
+  color: #141413 !important;
+}
+
+/* Highlight / Selection color matching */
+::selection {
+  background-color: rgba(204, 120, 92, 0.2);
+  color: #141413;
+}
+
+/* Sidebar Navigation Items styling */
+nav.bg-white {
+  background-color: #faf9f5 !important; /* Side Navigation blends seamlessly with canvas floor */
+  border-right: 1px solid #e6dfd8 !important;
+}
+
+/* Menu item text style */
+nav button, nav a {
+  font-family: "Inter", sans-serif !important;
+}
+
+/* Active sidebar item gets light cream card surface */
+nav button.bg-blue-50 {
+  background-color: #efe9de !important;
+  color: #cc785c !important;
+}
+
+nav button.bg-blue-50 svg {
+  color: #cc785c !important;
+}
+
+/* Footer & Dark panels styling (Anthropic's Surface Dark #181715) */
+.bg-gray-800, .bg-slate-900, .bg-zinc-900, .bg-black, footer, .dark-panel {
+  background-color: #181715 !important;
+  border-color: #252320 !important;
+}
+
+.bg-gray-800 *, .bg-slate-900 *, .bg-zinc-900 *, .bg-black *, footer *, .dark-panel * {
+  color: #faf9f5 !important; /* Light cream tint for dark elements text */
+}
+
+.bg-gray-800 h1, .bg-slate-900 h1, .bg-zinc-900 h1, .bg-black h1, footer h1, .dark-panel h1,
+.bg-gray-800 h2, .bg-slate-900 h2, .bg-zinc-900 h2, .bg-black h2, footer h2, .dark-panel h2,
+.bg-gray-800 h3, .bg-slate-900 h3, .bg-zinc-900 h3, .bg-black h3, footer h3, .dark-panel h3 {
+  color: #faf9f5 !important;
+  font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif !important;
+}
+
+/* Code block customization inside larger cards */
+pre, code, .bg-gray-50.p-3.rounded-lg.font-mono {
+  background-color: #1f1e1b !important;
+  color: #faf9f5 !important;
+  font-family: "JetBrains Mono", ui-monospace, monospace !important;
+  border-radius: 8px !important;
+}
+
+/* Ensure checklists or warnings maintain visual consistency */
+.bg-blue-50, .bg-blue-50\/20 {
+  background-color: #efe9de !important;
+  border-color: #e6dfd8 !important;
+}
+
+.text-blue-700, .text-blue-600 {
+  color: #cc785c !important; /* Map all blue text links to primary coral */
+}
+
+/* Interactive elements transition rules */
+button, a {
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Badges / Pills mapping */
+.bg-teal-50 {
+  background-color: #efe9de !important;
+  color: #5db8a6 !important;
+}
+
+.bg-purple-50 {
+  background-color: #efe9de !important;
+  color: #8e8b82 !important;
+}
+
+.bg-amber-50 {
+  background-color: #efe9de !important;
+  color: #e8a55a !important;
+}
+
+.bg-red-50 {
+  background-color: #efe9de !important;
+  color: #c64545 !important;
+}
+
+/* Administrative Alert banners */
+.bg-red-500 {
+  background-color: #181715 !important; /* Map to dark surface */
+  color: #faf9f5 !important;
+  border-bottom: 1px solid #cc785c !important; /* Coral under-stripe */
+}
